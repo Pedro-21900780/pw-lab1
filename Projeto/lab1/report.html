@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>1º Trabalho de Prática</title>
+</head>
+<body>
+    <h1>Report do 1º Trabalho Prático</h1>
+    <p>O seguinte report é referente ao 1º trabalho prático da disciplina <a href="https://secure.grupolusofona.pt/ulht/moodle/course/view.php?id=38119">Programação Web</a>, que está dividido nos seguintes tópicos:</p>
+    <ul>
+        <li><a href="#IPs" style="color: black">Conhecer a Internet - Investigação da localização dos IP's</a></li>
+        <li><a href="#http" style="color: black">Acesso via HTTP à minha página Web</a></li>
+    </ul> 
+    <h2 style="color: black" id="IPs">Conhecer a Internet - Investigação da localização dos IP's</h2>
+    <p>
+        O primeiro passo deste trabalho prático foi obter os IP's do computador, do telemóvel e do servidor onde se encontra aloja a app através da plataforma <a href="https:www.heroku.com">Heroku</a>, através da ferramenta <a href="https://whatismyipaddress.com/ip-lookup">ip-lookup</a>.
+        Os IP's do computador e do telemóvel apresentam na nossa zona de residência conforme esperado, como podemos visualizar nas imagens abaixo.
+    </p>
+    <table>
+        <tr style="text-align: left;">
+            <th><img src="img/ip-pc.png" alt="Localização PC" style="width:auto;height:500px; border-radius: 12px;"></th>
+            <th><img src="img/ip-tel.png" alt="Localização telemóvel" style="width:auto;height:500px; border-radius: 12px;"></th>
+        </tr>
+        <tr>
+            <td style="color: black">Localização do computador</td>
+            <td style="color: black">Localização do telemóvel</td>
+        </tr>
+    </table>
+    <p>
+        Podemos observar que as coordenadas de ambos são as mesmas, através do computador e do telemóvel.
+        De seguida para obtermos o IP de onde se encontra alojado a nossa app, efetuei através da linha de comandos um nslookup do endereço da app.
+    </p>
+    <table>
+        <tr style="text-align: left;">
+            <th><img src="img/nslookup.png" alt="Nslookup do endereço da app" style="width:auto;height:500px; border-radius: 12px;"></th>
+            <th><img src="img/ip-app.png" alt="Localização do servidor onde está alojada a app" style="width:auto;height:500px; border-radius: 12px;"></th>
+        </tr>
+        <tr>
+            <td style="color: black">Nslookup do endereço da app</td>
+            <td style="color: black">Localização do servidor onde está alojada a app</td>
+        </tr>
+    </table>
+    <p>
+        Podemos observar que a app encontra-se alojada num servidor da Amazon web services (AWS) localizado na Irlanda.<br>
+        Ao efectuar o nslookup verifiquei que existiam 8 endereços públicos associados ao mesmo, o que é normal.<br>
+        De seguida efetuei um tracerout ao endereço da app, o qual perdeu-se a meio do caminho ao servidor.<br>
+        Utilizei a ferramenta <a href="https://geotraceroute.com/" target="_blank">geotraceroute.com</a> conforme solicitado pelo enunciado.<br>
+        No qual podemos observar que o último salto foi na Alemanha em Frankfurt, poderá não ter chegado ao final pelo tracerout não ter terminado.
+    </p>
+    <table>
+        <tr style="text-align: left;">
+            <th><img src="img/traceroute.png" alt="Traceroute" style="width:auto;height:400px; border-radius: 12px;"></th>
+            <th><img src="img/geotraceroute.png" alt="Geotraceroute" style="width:auto;height:400px; border-radius: 12px;"></th>
+        </tr>
+        <tr>
+            <td style="color: black"">Traceroute do endereço da app</td>
+            <td style="color: black">Geotraceroute do endereço da app</td>
+        </tr>
+    </table>
+    <h2 style="color: black" id="http">Acesso via HTTP à minha página Web</h2>
+    <p>
+        Conforme solicitado pelo enunciado acedemos através da app alojada na plataforma <a href="https:www.heroku.com">Heroku</a> ao nosso trabalho, verificamos que é apresentada a seguinte página:
+    </p>
+    <table>
+        <tr style="text-align: left;">
+            <th><img src="img/http.png" alt="index.html" style="width:auto;height:400px; border-radius: 12px;"></th>
+        </tr>
+    </table>
+    <p>
+        Ao visualizarmos o código fonte dessa página através da opção "ver código fonte" (view page source) disponível no browser, podemos ver que corresponde ao código html que publicamos através do git.
+    </p>
+    <table>
+        <tr style="text-align: left;">
+            <th><img src="img/httpget.png" alt="Código fonte" style="width:auto;height:400px; border-radius: 12px;"></th>
+        </tr>
+        <tr>
+            <td style="color: black">Inspeção do código fonte</td>
+        </tr>
+    </table>
+    <p>
+        De seguida verificamos através ferramenta do chrome (edge chromium) visualizamos os ficheiros descarregados.<br>
+        O qual podemos verificar pela imagem seguinte que foram efetuados dois pedidos ao servidor ambos concluidos com o código http 200 (OK).<br>
+        Os pedidos foram feitos aos seguintes url's:
+    </p>
+    <ul>
+        <li>https://trabalho-web-1.herokuapp.com/ - Este ficheiro referente ao index.html, do tipo document, ao qual efectuou um download de 1.1 kB e demorou 322 ms a ser descarregado.</li>
+        <li>https://trabalho-web-1.herokuapp.com/img/wordcloud.png - Este ficheiro é a figura apresentada na página, é do tipo pngque já se encontrava em cache, por isso não efectuou o download.</li>
+    </ul>
+    <img src="img/inspect.png" alt="Ficheiros descarregados" style="width:auto;height:400px; border-radius: 12px;">
+    <p>
+        De seguida apresentados os quadros Preview, Headers e Timing dos dois ficheiros lado a lado respetivamente.
+    </p>
+    <table>
+        <tr style="text-align: left;">
+            <th><img src="img/preview-pagina.png" alt="Preview index.html" style="width:auto;height:400px; border-radius: 12px;"></th>
+            <th><img src="img/preview-img.png" alt="Preview wordcloud.png" style="width:auto;height:400px; border-radius: 12px;"></th>
+        </tr>
+        <tr>
+            <td style="color: black">Preview index.html</td>
+            <td style="color: black">Preview wordcloud.png</td>
+        </tr>
+    </table>
+    <p>
+        Neste separador efectuamos a pré-visualização do ficheiro descarregado.<br>
+        No caso do ficheiro index.html é apresentada a página e no caso do ficheiro wordcloud.png é apresentada a imagem.
+    </p>
+    <table>
+        <tr style="text-align: left;">
+            <th><img src="img/headers-pagina.png" alt="Headers index.html" style="width:auto;height:400px; border-radius: 12px;"></th>
+            <th><img src="img/headers-img.png" alt=Headers wordcloud.png" style="width:auto;height:400px; border-radius: 12px;"></th>
+        </tr>
+        <tr>
+            <td style="color: black">Headers index.html</td>
+            <td style="color: black">Headers wordcloud.png</td>
+        </tr>
+    </table>
+    <p>
+        De seguinte apresentadamos os vários headers que se encontram no pedido GET feito ao servidor.<br>
+        Os headers indicam-nos por exemplo o código de estado do pedido, neste caso 200 (OK), qual o metodo (GET), o IP e porto do servidor onde está alojado o ficheiro assim como outras informações relevantes.
+    </p>
+    <table>
+        <tr style="text-align: left;">
+            <th><img src="img/timing-pagina.png" alt="Timings index.html" style="width:auto;height:400px; border-radius: 12px;"></th>
+            <th><img src="img/timing-img.png" alt="Timings wordcloud.png" style="width:auto;height:400px; border-radius: 12px;"></th>
+        </tr>
+        <tr>
+            <td style="color: black">Timings index.html</td>
+            <td style="color: black">Timings wordcloud.png</td>
+        </tr>
+    </table>
+    <p>
+        Aqui podemos obter a informação referente aos tempos de resposta ao pedido feito, como o tempo que estivemos em queue para iniciar o download do ficheiro e quanto tempo demorou a transferência.
+    </p>
+    <br>
+    <p>
+        Para concluirmos conforme solicitado no enunciado apresentamos a mesma informação para a página da <a href="https://ulusofona.pt">Lusófona</a>.
+    <table>
+        <tr style="text-align: left;">
+            <th><img src="img/pagina-lusofona.png" alt="Página da Lusófona" style="width:auto;height:400px; border-radius: 12px;"></th>
+            <th><img src="img/LUSOFONAPREVIEW.png" alt="Preview www.ulusofona.pt" style="width:auto;height:400px; border-radius: 12px;"></th>
+        </tr>
+        <tr>
+            <td style="color: black">Página da Lusófona</td>
+            <td style="color: black">Preview www.ulusofona.pt</td>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <tr style="text-align: left;">
+            <th><img src="img/LUSOFONAHEADERS.png" alt="Headers www.ulusofona.pt" style="width:auto;height:400px; border-radius: 12px;"></th>
+            <th><img src="img/LUSOFONATIMINGS.png" alt="Timings www.ulusofona.pt" style="width:auto;height:400px; border-radius: 12px;"></th>
+        </tr>
+        <tr>
+            <td style="color: black">Headers www.ulusofona.pt</td>
+            <td style="color: black">Timings www.ulusofona.pt</td>
+        </tr>
+    </table>
+
+
+</body>
+</html>
